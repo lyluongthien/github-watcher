@@ -32,8 +32,10 @@ jobs:
       - name: Commit results
         uses: EndBug/add-and-commit@v9
         with:
-          committer_name: Another Kai [Jarvis]
-          committer_email: 43800313+lyluongthien@users.noreply.github.com
+          author_name: "Another Kai [Jarvis]"
+          author_email: 43800313+lyluongthien@users.noreply.github.com
+          committer_name: "[Jarvis]"
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
           fetch: false
           message: update-${{ github.run_number }}
           add: "./follow*.md --force"
