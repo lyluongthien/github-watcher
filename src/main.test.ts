@@ -92,7 +92,7 @@ describe('GitHub Watcher', () => {
   })
   
   describe('followers command', () => {
-    it('should fetch and sort followers', async () => {
+    it('should fetch followers', async () => {
       // Setup mock responses
       mockOctokit.users.getAuthenticated.mockResolvedValue({
         data: { login: 'testuser' }
@@ -127,13 +127,13 @@ describe('GitHub Watcher', () => {
         page: 2
       })
       
-      // Verify all users were logged in sorted order
-      const expectedUsersSorted = [
-        ...Array(25).fill(0).map((_, i) => `user${i}`),
-        ...Array(50).fill(0).map((_, i) => `user${i + 100}`)
-      ].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      // Verify all users were logged in API response order (no sorting)
+      const expectedUsers = [
+        ...Array(50).fill(0).map((_, i) => `user${i + 100}`), // First page response
+        ...Array(25).fill(0).map((_, i) => `user${i}`) // Second page response
+      ]
       
-      expectedUsersSorted.forEach((user, i) => {
+      expectedUsers.forEach((user, i) => {
         expect(consoleLogMock).toHaveBeenNthCalledWith(i + 1, user)
       })
     })
@@ -150,7 +150,7 @@ describe('GitHub Watcher', () => {
   })
   
   describe('following command', () => {
-    it('should fetch and sort following list', async () => {
+    it('should fetch following list', async () => {
       // Setup mock responses
       mockOctokit.users.getAuthenticated.mockResolvedValue({
         data: { login: 'testuser' }
@@ -185,13 +185,13 @@ describe('GitHub Watcher', () => {
         page: 2
       })
       
-      // Verify all users were logged in sorted order
-      const expectedUsersSorted = [
-        ...Array(25).fill(0).map((_, i) => `user${i}`),
-        ...Array(50).fill(0).map((_, i) => `user${i + 100}`)
-      ].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      // Verify all users were logged in API response order (no sorting)
+      const expectedUsers = [
+        ...Array(50).fill(0).map((_, i) => `user${i + 100}`), // First page response
+        ...Array(25).fill(0).map((_, i) => `user${i}`) // Second page response
+      ]
       
-      expectedUsersSorted.forEach((user, i) => {
+      expectedUsers.forEach((user, i) => {
         expect(consoleLogMock).toHaveBeenNthCalledWith(i + 1, user)
       })
     })

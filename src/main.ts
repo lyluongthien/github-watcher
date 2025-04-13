@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import { Octokit } from '@octokit/rest'
-import naturalCompare from 'string-natural-compare'
 
 // Types
 type Command = 'followers' | 'following'
@@ -23,8 +22,7 @@ async function printFollowing(octokit: Octokit): Promise<void> {
   try {
     const login = await getSelfID(octokit)
     const following = await listAllFollowing(octokit, login)
-    const sorted = [...following].sort(naturalCompare)
-    for (const user of sorted) {
+    for (const user of following) {
       console.log(user)
     }
   } catch (error) {
@@ -37,8 +35,7 @@ async function printFollowers(octokit: Octokit): Promise<void> {
   try {
     const login = await getSelfID(octokit)
     const followers = await listAllFollowers(octokit, login)
-    const sorted = [...followers].sort(naturalCompare)
-    for (const user of sorted) {
+    for (const user of followers) {
       console.log(user)
     }
   } catch (error) {
