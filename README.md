@@ -1,4 +1,6 @@
-# `github-watcher` [![Scan GitHub followers](https://github.com/lyluongthien/github-watcher/actions/workflows/update.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/lyluongthien/github-watcher/actions/workflows/update.yml)
+# `github-watcher` 
+
+[![Scan GitHub followers](https://github.com/lyluongthien/github-watcher/actions/workflows/update.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/lyluongthien/github-watcher/actions/workflows/update.yml)
 
 The tool for tracking GitHub followers and following lists, forked from [**tuananh/github-followers-watch**](https://github.com/tuananh/github-followers-watch).
 
