@@ -39,4 +39,4 @@ jobs:
           committer_email: 43800313+lyluongthien@users.noreply.github.com
           fetch: false
           message: update-${{ github.run_number }}
-          add: "*.md --force"
+          add: "./follow*.md --force"
