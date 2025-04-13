@@ -26,9 +26,9 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Fetch followers
-        run: node --import @swc-node/register/esm-register src/main.ts followers > followers.txt
+        run: node --import @swc-node/register/esm-register src/main.ts ghtool list-followers > followers.txt
       - name: Fetch following
-        run: node --import @swc-node/register/esm-register src/main.ts following > following.txt
+        run: node --import @swc-node/register/esm-register src/main.ts ghtool list-following > following.txt
       - name: Commit results
         uses: EndBug/add-and-commit@v9
         with:
