@@ -1,0 +1,42 @@
+name: Scan GitHub followers
+on:
+  workflow_dispatch:
+  schedule:
+    # - cron: "00 12 * * *" # Every day at 12:00 UTC
+    - cron: "*/5 * * * *" # Every 5 minutes
+  # push:
+  #   branches: [main]
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run tests
+        run: pnpm test
+      - name: Build
+        run: pnpm build
+      - name: Fetch followers
+        run: node --import @swc-node/register/esm-register src/main.ts followers > followers.md
+      - name: Fetch following
+        run: node --import @swc-node/register/esm-register src/main.ts following > following.md
+      - name: Commit results
+        uses: EndBug/add-and-commit@v9
+        with:
+          committer_name: Another Kai [Jarvis]
+          committer_email: 43800313+lyluongthien@users.noreply.github.com
+          fetch: false
+          message: update-${{ github.run_number }}
+          add: "*.md --force"

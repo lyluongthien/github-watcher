@@ -1,0 +1,31 @@
+{
+  "name": "github-watcher",
+  "version": "1.0.0",
+  "description": "GitHub followers and following watcher",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm src/main.ts",
+    "build": "tsc",
+    "test": "vitest --run",
+    "coverage": "vitest run --coverage",
+    "followers": "node --import @swc-node/register/esm-register src/main.ts followers",
+    "following": "node --import @swc-node/register/esm-register src/main.ts following"
+  },
+  "keywords": [],
+  "author": "Kai",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^21.1.1",
+    "@swc-node/register": "^1.10.10",
+    "dotenv": "^16.5.0",
+    "effect": "^3.14.8",
+    "string-natural-compare": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/string-natural-compare": "^3.0.4",
+    "@vitest/coverage-v8": "^1.3.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  }
+}
