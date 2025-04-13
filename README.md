@@ -1,8 +1,8 @@
 # `github-watcher` 
 
-[![CI status](https://github.com/lyluongthien/github-watcher/actions/workflows/ci.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/lyluongthien/github-watcher/actions/workflows/ci.yml)
+[![CI](https://github.com/lyluongthien/github-watcher/actions/workflows/ci.yml/badge.svg)](https://github.com/lyluongthien/github-watcher/actions/workflows/ci.yml)
 
-[![Scanning status](https://github.com/lyluongthien/github-watcher/actions/workflows/scan.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/lyluongthien/github-watcher/actions/workflows/scan.yml)
+[![Last scan](https://github.com/lyluongthien/github-watcher/actions/workflows/scan.yml/badge.svg)](https://github.com/lyluongthien/github-watcher/actions/workflows/scan.yml)
 
 A modern tool for monitoring GitHub followers and following lists, built with TypeScript and [Effect](https://effect.website/). This project is a reimagined version of [**tuananh/github-followers-watch**](https://github.com/tuananh/github-followers-watch), originally written in Go, enhanced with robust functional programming patterns and improved developer experience.
 
