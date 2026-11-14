@@ -1,5 +1,6 @@
 import { assert, describe, it, vi } from "@effect/vitest"
 import { Effect } from "effect"
+import { NodeContext } from "@effect/platform-node"
 import * as mainModule from './main'
 
 // Test data for mocking
@@ -120,3 +121,27 @@ describe("GitHub Watcher", () => {
     )
   })
 }) 
+describe("CLI argv", () => {
+  // newer @effect/cli treats argv after the script path as the root command's
+  // args, so passing the program name "ghtool" again fails with CommandMismatch
+  it.effect("resolves subcommands without the program name", () =>
+    Effect.gen(function* (_) {
+      const saved = process.env.PERSONAL_ACCESS_TOKEN
+      delete process.env.PERSONAL_ACCESS_TOKEN
+      try {
+        for (const sub of ["list-followers", "list-following"]) {
+          const error = yield* _(
+            mainModule.cli(["node", "src/main.ts", sub]).pipe(
+              Effect.provide(NodeContext.layer),
+              Effect.flip
+            )
+          )
+          // reaching the handler means the subcommand was parsed
+          assert.instanceOf(error, mainModule.GitHubApiError)
+        }
+      } finally {
+        if (saved !== undefined) process.env.PERSONAL_ACCESS_TOKEN = saved
+      }
+    })
+  )
+})

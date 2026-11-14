@@ -8,8 +8,8 @@
     "build": "tsc",
     "test": "vitest --run",
     "coverage": "vitest run --coverage",
-    "list-followers": "node --import @swc-node/register/esm-register src/main.ts ghtool list-followers",
-    "list-following": "node --import @swc-node/register/esm-register src/main.ts ghtool list-following"
+    "list-followers": "node --import @swc-node/register/esm-register src/main.ts list-followers",
+    "list-following": "node --import @swc-node/register/esm-register src/main.ts list-following"
   },
   "keywords": [],
   "author": "Kai",

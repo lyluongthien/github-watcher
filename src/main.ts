@@ -116,7 +116,7 @@ const listFollowersCommand = Command.make(
 );
 
 // Set up the CLI application
-const cli = Command.run(
+export const cli = Command.run(
   Command.make("ghtool", {}, () => Console.log("GitHub Tool - Use a subcommand")).pipe(
     Command.withSubcommands([listFollowingCommand, listFollowersCommand])
   ),
