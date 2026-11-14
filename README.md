@@ -29,16 +29,16 @@ Then run the commands:
 
 ```bash
 # Get your followers
-pnpm dev ghtool list-followers
+pnpm dev list-followers
 
 # Get users you're following
-pnpm dev ghtool list-following
+pnpm dev list-following
 ```
 
 For usage help:
 
 ```bash
-pnpm dev ghtool --help
+pnpm dev --help
 ```
 
 ## Development
